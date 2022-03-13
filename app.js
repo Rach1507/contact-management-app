@@ -1,7 +1,7 @@
 const express = require('express');
 const request = require('request');
 const https = require('https');
-
+require('dotenv').config();
 const ejs = require('ejs');
 
 
@@ -23,8 +23,8 @@ const mongoose = require('mongoose');
 const {Schema} = require('mongoose');
 
 // mongoose.connect("mongodb://localhost:27017/usersDB");
-mongoose.connect("mongodb+srv://rachitha:12Ccbu12@cluster0.17u2f.mongodb.net/usersDB");
-
+//mongoose.connect("mongodb+srv://rachitha:12Ccbu12@cluster0.17u2f.mongodb.net/usersDB");
+mongoose.connect("mongodb+srv://rachitha:"+process.env.password+"@cluster0.17u2f.mongodb.net/usersDB");
 //---------userSchema and model
 
 
