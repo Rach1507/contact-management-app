@@ -1,12 +1,13 @@
 # contact-management-app
 
+ ### Deployement of the application can be found at  https://contacts-app-zoho.herokuapp.com/
 
 Repository can be cloned locally and run
 
         To install required Node modules by command: npm install 
         To run locally : node app.js
         
- Deployement of the application can be found at  https://contacts-app-zoho.herokuapp.com/
+
        
 
 This is the contact management application created with following functionality
