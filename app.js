@@ -1,7 +1,7 @@
 const express = require('express');
 const request = require('request');
 const https = require('https');
-
+require('dotenv').config();
 const ejs = require('ejs');
 
 
@@ -23,7 +23,7 @@ const mongoose = require('mongoose');
 const {Schema} = require('mongoose');
 
 // mongoose.connect("mongodb://localhost:27017/usersDB");
-mongoose.connect("mongodb+srv://rachitha:12Ccbu12@cluster0.17u2f.mongodb.net/usersDB");
+mongoose.connect("mongodb+srv://rachitha:"+process.env.password+"@cluster0.17u2f.mongodb.net/usersDB");
 
 //---------userSchema and model
 
@@ -83,14 +83,26 @@ const Contact = mongoose.model("contact",contactSchema);
 
 app.get("/",(req,res) =>{
 
-  res.render("signUp",{emailAlert : false,pwdAlert:false,userPresent:false,error:false});
+  res.render("signUp",{
+    emailAlert : false,
+    pwdAlert:false,
+    userPresent:false,
+    error:false,
+  Title:"Contacts-Signup"
+});
 
   // res.sendFile(__dirname + "//signUp.html");
 
 });
 app.get("/signIn",(req,res) =>{
 
-  res.render("signIn",{emailFail : false,pwdFail:false,successfull:false,error:false});
+  res.render("signIn",{
+    emailFail : false,
+    pwdFail:false,
+    successfull:false,
+    error:false,
+    Title:"SignIn-Contacts"
+  });
 
   // res.sendFile(__dirname + "//signIn.html");
 
@@ -106,10 +118,14 @@ app.get("/contacts",(req,res) =>{
 
     if( contacts.length === 0 ) {
 
-      res.render('myContacts', {allContacts: contacts,newContact :false, error:false});
-}
-    else
-    {
+        res.render('myContacts', {
+          allContacts: contacts,
+          newContact :false,
+           error:false,
+             Title:" My Contacts"  });
+    }
+
+    else{
 
       const userContacts =[];
       contacts.forEach((contact)=>{
@@ -122,8 +138,11 @@ app.get("/contacts",(req,res) =>{
       });
 
 
-      console.log(userContacts);
-      res.render('myContacts', {allContacts: userContacts,newContact :false ,error:false});
+      res.render('myContacts', {
+        allContacts: userContacts,
+        newContact :false ,
+        error:false,
+      Title:" My Contacts" });
       }
 
       });
@@ -145,7 +164,12 @@ app.post("/", (req,res) => {
   if(!emailRegex.test(email)){
 
 
-    res.render("signUp",{emailAlert : true,pwdAlert:false,userPresent:false,error:false});
+    res.render("signUp",{
+      emailAlert:true,
+      pwdAlert:false,
+      userPresent:false,
+      error:false,
+      Title:"Contacts-Signup"});
 
   }
 
@@ -154,8 +178,13 @@ else{
   const password = req.body.password;
 
   if(!passwordRegex.test(password)){
-  res.render("signUp",{emailAlert : false,pwdAlert:true,userPresent:false,error:false});
-    // console.log(");
+  res.render("signUp",{
+    emailAlert : false,
+    pwdAlert:true,
+    userPresent:false,
+    error:false
+  ,  Title:"Contacts-Signup"});
+
     // res.redirect("/");
 
   }
@@ -179,7 +208,12 @@ const user1 = new User({
 user1.save((err)=>{
   if (err){
     console.log(err);
-    res.render("signUp",{emailAlert : false,pwdAlert:false,userPresent:false,error:true});
+    res.render("signUp",{
+      emailAlert : false,
+      pwdAlert:false,
+      userPresent:false,
+      error:true,
+      Title:"Contacts-Signup"});
 
 
     //TODO Pop up - signUp unsuccesful
@@ -187,7 +221,12 @@ user1.save((err)=>{
   else{
     console.log("Succesfully inserted the user");
 
-    res.render("signIn",{emailFail : false,pwdFail:false,successfull:true,error:false});
+    res.render("signIn",{
+      emailFail : false,
+      pwdFail:false,
+      successfull:true,
+      error:false,
+      Title:"SignIn-Contacts"});
 
     // res.redirect("/signIn");
   }
@@ -200,7 +239,12 @@ else {
 
   console.log("User Already present");
 
-    res.render("signUp",{emailAlert : false,pwdAlert:false,userPresent:true,error:false});
+    res.render("signUp",{
+      emailAlert : false,
+      pwdAlert:false,
+      userPresent:true,
+      error:false,
+      Title:"Contacts-Signup"});
   // res.redirect("/");
 
 }
@@ -224,7 +268,12 @@ app.post("/signIn",(req,response)=>{
     User.find({},(err, users)=>{
 console.log(users);
       if( users.length === 0 ) {
-                response.render("signIn",{emailFail : true,pwdFail:false,successfull:false,error:false});
+                response.render("signIn",{
+                  emailFail : true,
+                  pwdFail:false,
+                  successfull:false,
+                  error:false,
+                  Title:"SignIn-Contacts"});
       }
 
 
@@ -261,7 +310,12 @@ console.log(users);
 
         }
 
-        response.render("signIn",{emailFail : false,pwdFail:true,successfull:false,error:false});
+        response.render("signIn",{
+          emailFail : false,
+          pwdFail:true,
+          successfull:false,
+          error:false,
+          Title:"SignIn-Contacts"});
 
 
       }
@@ -293,7 +347,12 @@ const contact1 = new Contact({
 contact1.save((err)=>{
   if (err){
     console.log(err);
-res.render('myContacts', {allContacts: [], newContact :false ,error:true});
+res.render('myContacts', {
+  allContacts: [],
+   newContact :false ,
+   error:true,
+     Title:" My Contacts"
+ });
 
   }
   else{

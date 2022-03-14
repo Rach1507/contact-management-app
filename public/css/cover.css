@@ -94,7 +94,7 @@ padding-bottom: 8%;
   border-bottom-right-radius: 15px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  /*padding: 10px 10px 10px 10px;*/
+
 }
 
 
@@ -104,12 +104,12 @@ padding-bottom: 8%;
 
 .labels{
    text-align: left !important;
-  /*text-align:left!important;*/
+
 }
 
 
 .allContacts{
-  /*margin-top: 10%;*/
+
   margin-bottom: 10%;
 }
 
