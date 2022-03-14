@@ -48,7 +48,7 @@ Mongoose.
 Database hosted on mongoDB Atlas
 Deployed in heroku.
 
-Repository can be cloned locally and run To install required Node modules by command `node install` To run locally : `node app.js`
+Repository can be cloned locally and run To install required Node modules by command `npm install` To run locally : `node app.js`
  ### Deployement of the application can be found at  https://contacts-app-zoho.herokuapp.com/
 
 
