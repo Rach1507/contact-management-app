@@ -235,10 +235,7 @@ console.log(users);
 
         for (var i = 0; i < users.length; i++) {
           const user = users[i];
-          // console.log("Checking user");
-          // console.log(user.userEmail);
-          // console.log(user.usrPwd);
-      if (user.usrPwd === currPwd){
+         if(user.userEmail === currEmail && user.usrPwd === currPwd){
 
           console.log("successfull");
           global.currUser=user._id;
@@ -251,17 +248,16 @@ console.log(users);
       }
       else
 
-    {
+    
 
       console.log("unsuccessful");
 
 
-  }
-
-
-        }
-
-        response.render("signIn",{emailFail : false,pwdFail:true,successfull:false,error:false});
+  
+         }
+       
+         response.render("signIn",{emailFail : true,pwdFail:true,successfull:false,error:false});
+       alert("Login Unsuccessful ! Please check email or password ");
 
 
       }
