@@ -106,7 +106,7 @@ app.get("/contacts",(req,res) =>{
 
     if( contacts.length === 0 ) {
 
-      res.render('myContacts', {allContacts: contacts,newContact :false, error:false});
+      res.render('myContacts', {allContacts: [],newContact :false, error:false});
 }
     else
     {
