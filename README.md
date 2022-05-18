@@ -2,7 +2,7 @@
 # contact-management-app
 
 
-## [Run the application here](https://contacts-app-zoho.herokuapp.com/)
+## [Checkout the application here](https://contacts-app-zoho.herokuapp.com/)
 
 
 ## Repository can be cloned locally and run
@@ -46,6 +46,8 @@ Mongoose.
 
 
 Database hosted on mongoDB Atlas
+
+
 Deployed in heroku.
 
 Repository can be cloned locally and run To install required Node modules by command `npm install` To run locally : `node app.js`
